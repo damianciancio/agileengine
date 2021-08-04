@@ -1,7 +1,8 @@
 import axiosInstance from "./api";
 import TokenService from "./token";
 
-const setup = () => {
+const setup = async () => {
+
   axiosInstance.interceptors.request.use(
     (config) => {
       const token = TokenService.getToken();
@@ -33,7 +34,17 @@ const setup = () => {
             axiosInstance.defaults.headers.common['Authentication'] = 'Bearer ' + token;
             TokenService.setToken(token);
 
-            return axiosInstance(originalConfig);
+            const resp = await axiosInstance.request({          
+                method: originalConfig.method,          
+                url: originalConfig.url,          
+                params: originalConfig.params,          
+                withCredentials: true,
+                headers: {
+                    'Authentication': 'Bearer ' + token
+                }
+              });      
+
+              Promise.resolve(resp);
           } catch (_error) {
             return Promise.reject(_error);
           }

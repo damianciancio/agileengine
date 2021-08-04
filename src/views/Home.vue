@@ -98,7 +98,7 @@ export default {
     padding-left: 0;
   }
   li {
-    height: 35vh;
+    height: 30vh;
     flex-grow: 1;
     list-style: "";
   } 

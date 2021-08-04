@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+
 Vue.config.productionTip = false
 
 import authSetup from './services/auth-setup';
@@ -13,14 +14,14 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 import Clipboard from 'v-clipboard';
 
 Vue.use(Clipboard);
+Vue.use(FullpageModal);
+Vue.use(panZoom);
 
 
 authSetup();
-Vue.use(FullpageModal);
-Vue.use(panZoom);
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')

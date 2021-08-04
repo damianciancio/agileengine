@@ -1,5 +1,5 @@
 # agileengine
-
+I couldn't make the first login works before the first attempt to get the images. Once you reload the page, works.
 ## Project setup
 ```
 npm install
